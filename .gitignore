@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Downloaded models (auto-downloaded at runtime)
+tagger_models/
+
+# Auto-installed sd-scripts
+sd-scripts/
+
+# Training cache
+.cream_lora_cache.json

@@ -1,0 +1,5 @@
+# Cream LoRA Trainer + Auto Captioner
+# Training is handled by sd-scripts in its own venv
+# The following are needed for the Auto Captioner node:
+onnxruntime-gpu
+huggingface_hub

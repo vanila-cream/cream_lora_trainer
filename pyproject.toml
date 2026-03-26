@@ -1,0 +1,11 @@
+[project]
+name = "comfyui-cream-lora-trainer"
+description = "Simple SDXL LoRA trainer for ComfyUI using kohya sd-scripts. Dataset folder based training with intermediate saves."
+version = "1.0.0"
+license = "MIT"
+requires-python = ">=3.10"
+
+[tool.comfy]
+PublisherId = "cream"
+DisplayName = "Cream LoRA Trainer"
+Icon = ""
