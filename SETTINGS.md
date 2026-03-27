@@ -83,7 +83,7 @@
 | `no_half_vae` | true | VAE NaN 에러 방지 |
 | `noise_offset` | 0.0357 | 어두운/밝은 이미지 품질 개선 |
 | `min_snr_gamma` | 5 | 학습 안정성 개선 |
-| `xformers` | true | 메모리 효율적 어텐션 |
+| `sdpa` | true | 메모리 효율적 어텐션 (PyTorch 내장 Scaled Dot-Product Attention) |
 | `gradient_checkpointing` | true | VRAM 절약 |
 
 ### 기타

@@ -256,14 +256,30 @@ def _ensure_sd_scripts():
     # Install PyTorch with CUDA support
     # sd-scripts' requirements.txt excludes torch/torchvision because
     # they require CUDA-specific wheels from a separate index.
+    # Detect GPU compute capability to select the right CUDA version:
+    #   sm_120+ (Blackwell / RTX 5000) → cu128
+    #   sm_90 and below               → cu124
+    cuda_tag = "cu124"
+    try:
+        import torch as _torch
+        if _torch.cuda.is_available():
+            major, minor = _torch.cuda.get_device_capability(0)
+            if major >= 12:
+                cuda_tag = "cu128"
+            print(f"[Cream LoRA] GPU 감지: {_torch.cuda.get_device_name(0)} (sm_{major}{minor}) → {cuda_tag}")
+        else:
+            print(f"[Cream LoRA] CUDA 사용 불가 — 기본값 {cuda_tag} 사용")
+    except Exception as e:
+        print(f"[Cream LoRA] GPU 감지 실패 ({e}) — 기본값 {cuda_tag} 사용")
+
     print(f"[Cream LoRA] PyTorch (CUDA) 설치 중...")
-    pytorch_index = "https://download.pytorch.org/whl/cu124"
+    pytorch_index = f"https://download.pytorch.org/whl/{cuda_tag}"
     result = subprocess.run(
         [
-            uv, "pip", "install",
+            uv, "pip", "install", "-U", "--pre",
             "--python", venv_python,
             "--index-url", pytorch_index,
-            "torch", "torchvision", "xformers",
+            "torch", "torchvision",
         ],
         capture_output=True, text=True, encoding='utf-8', errors='replace',
         cwd=sd_scripts_path,
@@ -272,7 +288,7 @@ def _ensure_sd_scripts():
         raise RuntimeError(
             f"PyTorch 설치 실패:\n{result.stderr.strip()[-2000:]}"
         )
-    print(f"[Cream LoRA] PyTorch 설치 완료")
+    print(f"[Cream LoRA] PyTorch ({cuda_tag}) 설치 완료")
 
     # Ensure accelerate is installed
     result = subprocess.run(
