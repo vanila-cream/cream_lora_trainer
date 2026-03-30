@@ -20,7 +20,7 @@
 
 ```bash
 cd ComfyUI/custom_nodes
-git clone https://github.com/VaCream/comfyui-cream-lora-trainer
+git clone https://github.com/vanila-cream/cream_lora_trainer
 ```
 
 **방법 2: 수동 다운로드**
