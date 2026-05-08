@@ -1,5 +1,5 @@
 [project]
-name = "comfyui-cream-lora-trainer"
+name = "cream-lora-trainer"
 description = "Simple SDXL LoRA trainer for ComfyUI using kohya sd-scripts. Dataset folder based training with intermediate saves."
 version = "1.0.0"
 license = "MIT"

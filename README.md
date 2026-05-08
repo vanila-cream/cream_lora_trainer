@@ -27,7 +27,6 @@ git clone https://github.com/vanila-cream/cream_lora_trainer
 
 1. 상단의 `Code` → `Download ZIP`을 클릭하여 다운로드합니다.
 2. 압축을 해제한 뒤, 폴더를 ComfyUI의 `custom_nodes` 폴더에 넣습니다.
-3. 폴더 이름이 `comfyui-cream-lora-trainer`인지 확인합니다. (`-main` 등의 접미사가 붙어있다면 제거해주세요.)
 
 ComfyUI를 재시작하면 의존성이 자동으로 설치되고 사용할 수 있습니다.
 
